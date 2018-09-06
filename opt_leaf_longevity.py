@@ -38,8 +38,11 @@ def f(ndays, *args, **kws):
 
     A_day_avg = carbon_gain / ndays[0]
     maintenance_cost = A_day_avg * 0.6 * ndays[0]
+
+    # marginal gain
     g = (1.0 / ndays) * (carbon_gain - maintenance_cost - construction_cost)
 
+    # maximise marginal gain
     return -1.0 * g
 
 def calc_gain(ndays, Ci, Tleaf, Par, Rd, Vcmax, Jmax):
