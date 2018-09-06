@@ -75,7 +75,7 @@ if __name__ == "__main__":
     Jmax = Vcmax * jv_ratio
     Rd = Vcmax * 0.015
 
-    leaf_construct_cost = np.linspace(100.0, 8000.0, 20)
+    leaf_construct_cost = np.linspace(0.0, 6000.0, 30)
     gain_save = []
     length = []
     for lcost in leaf_construct_cost:
