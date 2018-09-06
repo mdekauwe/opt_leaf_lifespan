@@ -97,3 +97,29 @@ if __name__ == "__main__":
     plt.xlabel("Leaf construction cost")
     plt.ylabel("Leaf lifespan (days)")
     plt.show()
+
+
+    lcost = 500.0
+
+    gain_save = []
+    length = []
+    Vcmax_vals = np.linspace(10, 100, 10)
+    for Vcmax in Vcmax_vals:
+
+        Jmax = Vcmax * jv_ratio
+        Rd = Vcmax * 0.015
+        # guess at growing season length
+        x0 = [50]
+        result = minimize(f, x0=x0, tol=1E-3,
+                          args=(Ci, Tleaf, Par, Rd, Vcmax, Jmax, lcost),
+                          bounds=[(1, 365*3)])
+        days = result.x[0]
+
+        carbon_gain = calc_gain(days, Ci, Tleaf, Par, Rd, Vcmax, Jmax)
+        gain_save.append(carbon_gain / 365.)
+        length.append(days)
+
+    plt.plot(Vcmax_vals, length, "bo")
+    plt.xlabel("Vcmax")
+    plt.ylabel("Leaf lifespan (days)")
+    plt.show()
