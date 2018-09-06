@@ -92,5 +92,5 @@ if __name__ == "__main__":
 
     plt.plot(leaf_construct_cost, length, "bo")
     plt.xlabel("Leaf construction cost")
-    plt.ylabel("Leaf lifespan (d$^{-1}$)")
+    plt.ylabel("Leaf lifespan (days)")
     plt.show()
